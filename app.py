@@ -68,3 +68,10 @@ numerical_column = col_donnees
 # Create interactive line chart using Plotly
 fig = px.line(df, x=col_date, y=col_donnees, title="Consommation totale de la semaine")
 st.plotly_chart(fig)
+
+# Calculer la consommation totale de la semaine
+df_weekly_total = calculer_consommation_totale_semaine(df, col_date, col_donnees)
+
+# Afficher la consommation totale de la semaine
+st.subheader("Consommation totale de la semaine")
+st.write(df_weekly_total)
