@@ -55,4 +55,4 @@ st.subheader("Consommation totale de la semaine")
 st.write(df_weekly_total)
 
 # Appel de la fonction pour afficher les données supprimées
-display_removed_data(removed_data)
+display_removed_data(remove_data)
