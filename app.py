@@ -44,15 +44,15 @@ st.subheader("Line Chart of Numerical Data Over Time")
 
 numerical_column = col_donnees
 
-fig = px.line(df, x=col_date, y=col_donnees, title="Consommation totale de la semaine")
-st.plotly_chart(fig)
+#fig = px.line(df, x=col_date, y=col_donnees, title="Consommation totale de la semaine")
+#st.plotly_chart(fig)
 
 # Calculer la consommation totale de la semaine
-df_weekly_total = calculer_consommation_totale_semaine(df, col_date, col_donnees)
+#df_weekly_total = calculer_consommation_totale_semaine(df, col_date, col_donnees)
 
 # Afficher la consommation totale de la semaine
-st.subheader("Consommation totale de la semaine")
-st.write(df_weekly_total)
+#st.subheader("Consommation totale de la semaine")
+#st.write(df_weekly_total)
 
 # Appel de la fonction pour afficher les données supprimées
 display_removed_data(remove_data)
