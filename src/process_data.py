@@ -56,7 +56,6 @@ def main_process():
     df: pd.DataFrame = load_data()
     df = format_data(df)
     export_data(df)
-    df_weekly_total = calculer_consommation_totale_semaine(df, col_date, col_donnees)
 
 
 if __name__ == "__main__":
