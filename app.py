@@ -41,10 +41,11 @@ st.plotly_chart(fig)
 # Calculer la consommation totale sur la dernière semaine de chaque mois
 df_last_week_monthly = calculer_consommation_totale_semaine(df, "date", "consommation")
 
-# Afficher les données dans un tableau
-st.write("Consommation totale sur la dernière semaine de chaque mois :")
-st.write(df_last_week_monthly)
+# Afficher le titre
+st.title("Consommation totale sur la dernière semaine de chaque mois")
 
-# Créer la charte graphique en cercle
-fig = px.pie(df_last_week_monthly, values='consommation', names='date', title="Consommation totale de la semaine")
-st.plotly_chart(fig, use_container_width=True)
+# Afficher les données dans la ligne en dessous avec une taille de police plus grande
+st.markdown("**Consommation totale sur la dernière semaine de chaque mois :**")
+st.markdown(f"<h1>{df_last_week_monthly}</h1>", unsafe_allow_html=True)
+
+
