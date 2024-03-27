@@ -41,6 +41,12 @@ def export_data(df: pd.DataFrame):
     os.makedirs("data/interim/", exist_ok=True)
     df.to_csv(fic_export_data, index=False)
 
+def calculer_consommation_totale_semaine(df: pd.DataFrame, col_date: str, col_donnees: str) -> pd.DataFrame:
+    # Assurez-vous que la colonne de dates est au format datetime
+    df[col_date] = pd.to_datetime(df[col_date])
+    # Grouper les données par semaine et calculer la somme de la consommation pour chaque semaine
+    df_weekly_total = df.groupby(pd.Grouper(key=col_date, freq='W-Mon'))[col_donnees].sum().reset_index()
+    return df_weekly_total
 
 def main_process():
     df: pd.DataFrame = load_data()
