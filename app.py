@@ -36,9 +36,9 @@ def remove_data(df: pd.DataFrame, last_n_samples: int = 4*3):
 df = load_data(LAG_N_DAYS)
 df = remove_data(df, last_n_samples=4*24)
 
-def display_removed_data(removed_data: pd.DataFrame):
+def display_removed_data(remove_data: pd.DataFrame):
     st.write("Données supprimées :")
-    st.write(removed_data)
+    st.write(remove_data)
     
 st.subheader("Line Chart of Numerical Data Over Time")
 
