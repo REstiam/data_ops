@@ -28,8 +28,13 @@ def load_data(lag_days: int):
     main_process()
     data = pd.read_csv(fic_export_data, parse_dates=[col_date])
     return data
-
+    
+def remove_data(df: pd.DataFrame, last_n_samples: int = 4*3):
+    # df: pd.DataFrame = pd.read_csv(fic_export_data)
+    return df.iloc[:-last_n_samples]
+    # df.to_csv(fic_export_data, index=False)
 df = load_data(LAG_N_DAYS)
+df = remove_data(df, last_n_samples=4*24)
 
 st.subheader("Line Chart of Numerical Data Over Time")
 
