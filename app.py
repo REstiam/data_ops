@@ -38,14 +38,11 @@ numerical_column = col_donnees
 fig = px.line(df, x=col_date, y=col_donnees, title="Consommation totale de la semaine")
 st.plotly_chart(fig)
 
-# Calculer la consommation totale sur la dernière semaine de chaque mois
-df_last_week_monthly = calculer_consommation_totale_semaine(df, "date", "consommation")
+# Calculer la consommation totale de la semaine
+df_weekly_total = calculer_consommation_totale_semaine(df, col_date, col_donnees)
 
-# Afficher le titre
-st.title("Consommation totale sur la dernière semaine de chaque mois")
-
-# Afficher les données dans la ligne en dessous avec une taille de police plus grande
-st.markdown("**Consommation totale sur la dernière semaine de chaque mois :**")
-st.markdown(f"<h1>{df_last_week_monthly}</h1>", unsafe_allow_html=True)
+# Afficher la consommation totale de la semaine
+st.subheader("Consommation totale de la semaine")
+st.write(df_weekly_total)
 
 
