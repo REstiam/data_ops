@@ -45,7 +45,7 @@ def calculer_consommation_totale_semaine(df: pd.DataFrame, col_date: str, col_do
     # Assurez-vous que la colonne de dates est au format datetime
     df[col_date] = pd.to_datetime(df[col_date])
     # Grouper les données par semaine et calculer la somme pour chaque semaine
-    df_weekly_total = df.groupby(df[col_date].dt.to_period('W')).sum().reset_index()
+    df_weekly_total = df.groupby(df[col_date].dt.to_period('W'))[col_donnees].sum().reset_index()
     # Convertir la période en une colonne de dates pour récupérer le mois
     df_weekly_total[col_date] = df_weekly_total[col_date].dt.to_timestamp()
     # Grouper les données par mois et sélectionner seulement la dernière semaine de chaque mois
