@@ -34,7 +34,7 @@ def remove_data(df: pd.DataFrame, last_n_samples: int = 4*3):
     return df.iloc[:-last_n_samples]
     # df.to_csv(fic_export_data, index=False)
 df = load_data(LAG_N_DAYS)
-df = remove_data(df, last_n_samples=4*24)
+df, removed_data = remove_data(df, last_n_samples=4*24)
 
 def display_removed_data(remove_data: pd.DataFrame):
     st.write("Données supprimées :")
