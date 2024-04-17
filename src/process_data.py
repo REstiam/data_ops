@@ -5,6 +5,10 @@ import glob
 from pathlib import Path
 import json
 
+from schedule import repeat, every
+import logging
+logging.basicConfig(level=logging.INFO)
+
 col_date: str = "date_heure"
 col_donnees: str = "consommation"
 cols: List[str] = [col_date, col_donnees]
@@ -41,17 +45,7 @@ def export_data(df: pd.DataFrame):
     os.makedirs("data/interim/", exist_ok=True)
     df.to_csv(fic_export_data, index=False)
 
-def calculer_consommation_totale_semaine(df: pd.DataFrame, col_date: str, col_donnees: str) -> pd.DataFrame:
-    # Assurez-vous que la colonne de dates est au format datetime
-    df[col_date] = pd.to_datetime(df[col_date])
-    # Grouper les données par semaine et calculer la somme pour chaque semaine
-    df_weekly_total = df.groupby(df[col_date].dt.to_period('W'))[col_donnees].sum().reset_index()
-    # Supprimer la colonne de dates avant de réinitialiser l'index
-    del df_weekly_total[col_date]
-    # Réinitialiser l'index
-    df_weekly_total = df_weekly_total.groupby(df_weekly_total.index // 4).sum().reset_index()
-    return df_weekly_total
-
+@repeat(every(5).minutes)
 def main_process():
     df: pd.DataFrame = load_data()
     df = format_data(df)
